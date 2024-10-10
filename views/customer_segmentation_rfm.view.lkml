@@ -140,16 +140,19 @@ view: customer_segmentation_rfm {
   dimension: recency_quantile {
     type: number
     sql: ${TABLE}.recency_quantile ;;
+    hidden: yes
   }
 
   dimension: frequency_quantile {
     type: number
     sql: ${TABLE}.frequency_quantile ;;
+    hidden: yes
   }
 
   dimension: monetary_quantile {
     type: number
     sql: ${TABLE}.monetary_quantile ;;
+    hidden: yes
   }
 
   dimension: customer_segment {
