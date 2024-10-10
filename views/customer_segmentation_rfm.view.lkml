@@ -97,7 +97,15 @@ view: customer_segmentation_rfm {
     -- Others/Recent Shopper (1XX & 2XX)
     ELSE "Others/Recent Shopper"
     END
-    AS customer_segment
+    AS customer_segment,
+    CASE
+      WHEN monetary_quantile = 1 THEN "Big Spender"
+      WHEN frequency_quantile = 1 THEN "Loyal Customers"
+      WHEN recency_quantile <= 2 THEN "Recent Shopper"
+      WHEN recency_quantile = 3 THEN "Almost Lost"
+      WHEN recency_quantile = 4 THEN "Lost Customers"
+    END
+    AS macro_cluster
     FROM
     rfm_quant
     ORDER BY recency ASC;;
@@ -150,9 +158,15 @@ view: customer_segmentation_rfm {
     sql: ${TABLE}.customer_segment ;;
   }
 
+  dimension: macro_cluster {
+    description: "macro cluster segment type"
+    type: string
+    sql: ${TABLE}.macro_cluster ;;
+  }
+
   measure: count {
     type: count
-    drill_fields: [customer_id, customer_segment, orders.count]
+    drill_fields: [customer_id, customer_segment, macro_cluster, orders.count]
   }
 
 }
