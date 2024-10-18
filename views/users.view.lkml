@@ -1,4 +1,6 @@
 view: users {
+  sql_table_name: `tridorian-wildan-sandbox-dev.ecomm.users_th` ;;
+
   dimension: id {
     primary_key: yes
     type: number
@@ -77,6 +79,7 @@ view: users {
   dimension: state {
     type: string
     sql: ${TABLE}.state ;;
+    map_layer_name: thailand_province_layer
   }
 
   dimension: traffic_source {
