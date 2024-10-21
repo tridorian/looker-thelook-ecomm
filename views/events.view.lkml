@@ -1,5 +1,5 @@
 view: events {
-  sql_table_name: `tridorian-wildan-sandbox-dev.ecomm.events` ;;
+  sql_table_name: `tridorian-wildan-sandbox-dev.ecomm.events_th` ;;
   drill_fields: [id]
 
   dimension: id {
