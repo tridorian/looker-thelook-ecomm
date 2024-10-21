@@ -6,6 +6,7 @@ include: "/views/products.view"
 include: "/views/users.view"
 include: "/views/customer_segmentation_rfm.view"
 include: "/views/product_semantic_search.view"
+include: "/views/events.view"
 
 explore: order_items {
   join: product_semantic_search {
@@ -37,6 +38,12 @@ explore: order_items {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
+  }
+
+  join: events {
+    type: left_outer
+    sql_on: ${users.id} = ${events.user_id};;
+    relationship: one_to_many
   }
 
   join: customer_segmentation_rfm {
