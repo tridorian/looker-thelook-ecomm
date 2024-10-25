@@ -65,7 +65,7 @@ view: users {
       }
       form_param: {
         name: "plain_text_content"
-        type: string
+        type: textarea
         label: "Body Mail"
         required: yes
         default: "string"
