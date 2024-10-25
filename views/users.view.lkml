@@ -39,6 +39,38 @@ view: users {
   dimension: email {
     type: string
     sql: ${TABLE}.email ;;
+    action: {
+      label: "Send Email via SendGrid"
+      url: "https://asia-southeast1-tridorian-wildan-sandbox-dev.cloudfunctions.net/sendgrid-http"
+      form_param: {
+        name: "from_address"
+        type: string
+        label: "Sender"
+        required: yes
+        default: "wildan.putra@tridorian.com"
+      }
+      form_param: {
+        name: "to_address"
+        type: string
+        label: "Receiver"
+        required: yes
+        default: "{{value}}"
+      }
+      form_param: {
+        name: "subject"
+        type: string
+        label: "Subject"
+        required: yes
+        default: "string"
+      }
+      form_param: {
+        name: "plain_text_content"
+        type: string
+        label: "Body Mail"
+        required: yes
+        default: "string"
+      }
+    }
   }
 
   dimension: first_name {
