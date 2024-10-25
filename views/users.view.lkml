@@ -64,11 +64,26 @@ view: users {
         default: "string"
       }
       form_param: {
-        name: "plain_text_content"
+        name: "body"
         type: textarea
         label: "Body Mail"
         required: yes
-        default: "string"
+        default: "String"
+      }
+      form_param: {
+        name: "content_type"
+        type: select
+        label: "HTML or Text"
+        required: yes
+        default: "text/plain"
+        option: {
+          name:  "text/plain"
+          label:  "Text"
+        }
+        option: {
+          name:  "text/html"
+          label:  "HTML"
+        }
       }
     }
   }
@@ -86,6 +101,11 @@ view: users {
   dimension: last_name {
     type: string
     sql: ${TABLE}.last_name ;;
+  }
+
+  dimension: name {
+    type: string
+    sql: CONCAT(CONCAT(${first_name}," "),${last_name}) ;;
   }
 
   dimension: lat {
