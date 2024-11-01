@@ -34,14 +34,21 @@ view: customer_segmentation_rfm {
       recency_quantile, frequency_quantile, monetary_quantile,
     CASE
     -- Best Customer (111)
-    WHEN recency_quantile = 1 AND frequency_quantile = 1 AND monetary_quantile = 1 THEN "Best Customer"
-    -- Potential Customers (112, 122, 211, 222)
-    WHEN (recency_quantile = 1 AND frequency_quantile = 1 AND monetary_quantile = 2) OR # 112
-         (recency_quantile = 2 AND frequency_quantile = 1 AND monetary_quantile = 1) OR # 211
-         (recency_quantile = 1 AND frequency_quantile = 2 AND monetary_quantile = 2) OR # 122
-         (recency_quantile = 2 AND frequency_quantile = 2 AND monetary_quantile = 2)    # 222
-        THEN "Potential Customers"
-    -- Big Spender (XX1)
+    WHEN recency_quantile = 1 AND frequency_quantile = 1 AND monetary_quantile = 1 THEN "Core - Your Best Customers"
+    -- Loyal Customers (X1X)
+    WHEN (recency_quantile = 1 AND frequency_quantile = 1 AND monetary_quantile = 3) OR # 113
+         (recency_quantile = 1 AND frequency_quantile = 1 AND monetary_quantile = 4) OR # 114
+         (recency_quantile = 2 AND frequency_quantile = 1 AND monetary_quantile = 2) OR # 212
+         (recency_quantile = 2 AND frequency_quantile = 1 AND monetary_quantile = 3) OR # 213
+         (recency_quantile = 2 AND frequency_quantile = 1 AND monetary_quantile = 4) OR # 214
+         (recency_quantile = 3 AND frequency_quantile = 1 AND monetary_quantile = 2) OR # 312
+         (recency_quantile = 3 AND frequency_quantile = 1 AND monetary_quantile = 3) OR # 313
+         (recency_quantile = 3 AND frequency_quantile = 1 AND monetary_quantile = 4) OR # 314
+         (recency_quantile = 4 AND frequency_quantile = 1 AND monetary_quantile = 2) OR # 412
+         (recency_quantile = 4 AND frequency_quantile = 1 AND monetary_quantile = 3) OR # 413
+         (recency_quantile = 4 AND frequency_quantile = 1 AND monetary_quantile = 4)    # 414
+        THEN "Loyal - Your Most Loyal Customers"
+    -- Highest Paying Customers (XX1)
     WHEN (recency_quantile = 1 AND frequency_quantile = 2 AND monetary_quantile = 1) OR # 121
          (recency_quantile = 1 AND frequency_quantile = 3 AND monetary_quantile = 1) OR # 131
          (recency_quantile = 1 AND frequency_quantile = 4 AND monetary_quantile = 1) OR # 141
@@ -56,56 +63,17 @@ view: customer_segmentation_rfm {
          (recency_quantile = 4 AND frequency_quantile = 2 AND monetary_quantile = 1) OR # 421
          (recency_quantile = 4 AND frequency_quantile = 3 AND monetary_quantile = 1) OR # 431
          (recency_quantile = 4 AND frequency_quantile = 4 AND monetary_quantile = 1)    # 441
-        THEN "Big Spender"
-    -- Loyal Customers (X1X)
-    WHEN (recency_quantile = 1 AND frequency_quantile = 1 AND monetary_quantile = 3) OR # 113
-         (recency_quantile = 1 AND frequency_quantile = 1 AND monetary_quantile = 4) OR # 114
-         (recency_quantile = 2 AND frequency_quantile = 1 AND monetary_quantile = 2) OR # 212
-         (recency_quantile = 2 AND frequency_quantile = 1 AND monetary_quantile = 3) OR # 213
-         (recency_quantile = 2 AND frequency_quantile = 1 AND monetary_quantile = 4) OR # 214
-         (recency_quantile = 3 AND frequency_quantile = 1 AND monetary_quantile = 2) OR # 312
-         (recency_quantile = 3 AND frequency_quantile = 1 AND monetary_quantile = 3) OR # 313
-         (recency_quantile = 3 AND frequency_quantile = 1 AND monetary_quantile = 4) OR # 314
-         (recency_quantile = 4 AND frequency_quantile = 1 AND monetary_quantile = 2) OR # 412
-         (recency_quantile = 4 AND frequency_quantile = 1 AND monetary_quantile = 3) OR # 413
-         (recency_quantile = 4 AND frequency_quantile = 1 AND monetary_quantile = 4)    # 414
-        THEN "Loyal Customers"
-    -- Almost Lost (3XX)
-    WHEN (recency_quantile = 3 AND frequency_quantile = 2 AND monetary_quantile = 2) OR # 322
-         (recency_quantile = 3 AND frequency_quantile = 2 AND monetary_quantile = 3) OR # 323
-         (recency_quantile = 3 AND frequency_quantile = 2 AND monetary_quantile = 4) OR # 324
-         (recency_quantile = 3 AND frequency_quantile = 3 AND monetary_quantile = 2) OR # 332
-         (recency_quantile = 3 AND frequency_quantile = 3 AND monetary_quantile = 3) OR # 333
-         (recency_quantile = 3 AND frequency_quantile = 3 AND monetary_quantile = 4) OR # 334
-         (recency_quantile = 3 AND frequency_quantile = 4 AND monetary_quantile = 2) OR # 342
-         (recency_quantile = 3 AND frequency_quantile = 4 AND monetary_quantile = 3) OR # 343
-         (recency_quantile = 3 AND frequency_quantile = 4 AND monetary_quantile = 4)    # 344
-        THEN "Almost Lost"
-    -- Lost Customers (4XX)
-    WHEN (recency_quantile = 4 AND frequency_quantile = 2 AND monetary_quantile = 2) OR # 422
-         (recency_quantile = 4 AND frequency_quantile = 2 AND monetary_quantile = 3) OR # 423
-         (recency_quantile = 4 AND frequency_quantile = 2 AND monetary_quantile = 4) OR # 424
-         (recency_quantile = 4 AND frequency_quantile = 3 AND monetary_quantile = 2) OR # 432
-         (recency_quantile = 4 AND frequency_quantile = 3 AND monetary_quantile = 3) OR # 433
-         (recency_quantile = 4 AND frequency_quantile = 4 AND monetary_quantile = 2)    # 442
-        THEN "Lost Customers"
-    -- Lost Cheap (444, 443, 434)
-    WHEN (recency_quantile = 4 AND frequency_quantile = 4 AND monetary_quantile = 4) OR # 444
-         (recency_quantile = 4 AND frequency_quantile = 4 AND monetary_quantile = 3) OR # 443
-         (recency_quantile = 4 AND frequency_quantile = 3 AND monetary_quantile = 4)    # 434
-        THEN "Lost Cheap"
-    -- Others/Recent Shopper (1XX & 2XX)
-    ELSE "Others/Recent Shopper"
+        THEN "Whales - Your Highest Paying Customers"
+    -- Promising - Faithful customers (X13, X14)
+    WHEN (frequency_quantile = 1 AND monetary_quantile = 3) OR # X13
+         (frequency_quantile = 1 AND monetary_quantile = 4) OR # X14
+        THEN "Promising - Faithful customers"
+    -- Your Newest Customers (14X)
+    WHEN (recency_quantile = 1 AND frequency_quantile = 4) THEN "Rookies - Your Newest Customers"
+    -- Once Loyal, Now Gone (44X)
+    WHEN (recency_quantile = 4 AND frequency_quantile = 4) THEN "Slipping - Once Loyal, Now Gone"
     END
-    AS customer_segment,
-    CASE
-      WHEN monetary_quantile = 1 THEN "Big Spender"
-      WHEN frequency_quantile = 1 THEN "Loyal Customers"
-      WHEN recency_quantile <= 2 THEN "Recent Shopper"
-      WHEN recency_quantile = 3 THEN "Almost Lost"
-      WHEN recency_quantile = 4 THEN "Lost Customers"
-    END
-    AS macro_cluster
+    AS customer_segment
     FROM
     rfm_quant
     ORDER BY recency ASC;;
@@ -161,15 +129,9 @@ view: customer_segmentation_rfm {
     sql: ${TABLE}.customer_segment ;;
   }
 
-  dimension: macro_cluster {
-    description: "macro cluster segment type"
-    type: string
-    sql: ${TABLE}.macro_cluster ;;
-  }
-
   measure: count {
     type: count
-    drill_fields: [customer_id, customer_segment, macro_cluster, orders.count]
+    drill_fields: [customer_id, customer_segment, orders.count]
   }
 
 }
