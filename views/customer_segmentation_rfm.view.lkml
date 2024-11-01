@@ -66,7 +66,7 @@ view: customer_segmentation_rfm {
         THEN "Whales - Your Highest Paying Customers"
     -- Promising - Faithful customers (X13, X14)
     WHEN (frequency_quantile = 1 AND monetary_quantile = 3) OR # X13
-         (frequency_quantile = 1 AND monetary_quantile = 4) OR # X14
+         (frequency_quantile = 1 AND monetary_quantile = 4)    # X14
         THEN "Promising - Faithful customers"
     -- Your Newest Customers (14X)
     WHEN (recency_quantile = 1 AND frequency_quantile = 4) THEN "Rookies - Your Newest Customers"
