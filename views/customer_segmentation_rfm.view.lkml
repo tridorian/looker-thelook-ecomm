@@ -36,34 +36,9 @@ view: customer_segmentation_rfm {
     -- Best Customer (111)
     WHEN recency_quantile = 1 AND frequency_quantile = 1 AND monetary_quantile = 1 THEN "Core - Your Best Customers"
     -- Loyal Customers (X1X)
-    WHEN (recency_quantile = 1 AND frequency_quantile = 1 AND monetary_quantile = 3) OR # 113
-         (recency_quantile = 1 AND frequency_quantile = 1 AND monetary_quantile = 4) OR # 114
-         (recency_quantile = 2 AND frequency_quantile = 1 AND monetary_quantile = 2) OR # 212
-         (recency_quantile = 2 AND frequency_quantile = 1 AND monetary_quantile = 3) OR # 213
-         (recency_quantile = 2 AND frequency_quantile = 1 AND monetary_quantile = 4) OR # 214
-         (recency_quantile = 3 AND frequency_quantile = 1 AND monetary_quantile = 2) OR # 312
-         (recency_quantile = 3 AND frequency_quantile = 1 AND monetary_quantile = 3) OR # 313
-         (recency_quantile = 3 AND frequency_quantile = 1 AND monetary_quantile = 4) OR # 314
-         (recency_quantile = 4 AND frequency_quantile = 1 AND monetary_quantile = 2) OR # 412
-         (recency_quantile = 4 AND frequency_quantile = 1 AND monetary_quantile = 3) OR # 413
-         (recency_quantile = 4 AND frequency_quantile = 1 AND monetary_quantile = 4)    # 414
-        THEN "Loyal - Your Most Loyal Customers"
+    WHEN (frequency_quantile = 1 AND monetary_quantile < 3) THEN "Loyal - Your Most Loyal Customers"
     -- Highest Paying Customers (XX1)
-    WHEN (recency_quantile = 1 AND frequency_quantile = 2 AND monetary_quantile = 1) OR # 121
-         (recency_quantile = 1 AND frequency_quantile = 3 AND monetary_quantile = 1) OR # 131
-         (recency_quantile = 1 AND frequency_quantile = 4 AND monetary_quantile = 1) OR # 141
-         (recency_quantile = 2 AND frequency_quantile = 2 AND monetary_quantile = 1) OR # 221
-         (recency_quantile = 2 AND frequency_quantile = 3 AND monetary_quantile = 1) OR # 231
-         (recency_quantile = 2 AND frequency_quantile = 4 AND monetary_quantile = 1) OR # 241
-         (recency_quantile = 3 AND frequency_quantile = 1 AND monetary_quantile = 1) OR # 311
-         (recency_quantile = 3 AND frequency_quantile = 2 AND monetary_quantile = 1) OR # 321
-         (recency_quantile = 3 AND frequency_quantile = 3 AND monetary_quantile = 1) OR # 331
-         (recency_quantile = 3 AND frequency_quantile = 4 AND monetary_quantile = 1) OR # 341
-         (recency_quantile = 4 AND frequency_quantile = 1 AND monetary_quantile = 1) OR # 411
-         (recency_quantile = 4 AND frequency_quantile = 2 AND monetary_quantile = 1) OR # 421
-         (recency_quantile = 4 AND frequency_quantile = 3 AND monetary_quantile = 1) OR # 431
-         (recency_quantile = 4 AND frequency_quantile = 4 AND monetary_quantile = 1)    # 441
-        THEN "Whales - Your Highest Paying Customers"
+    WHEN monetary_quantile = 1 THEN "Whales - Your Highest Paying Customers"
     -- Promising - Faithful customers (X13, X14)
     WHEN (frequency_quantile = 1 AND monetary_quantile = 3) OR # X13
          (frequency_quantile = 1 AND monetary_quantile = 4)    # X14
