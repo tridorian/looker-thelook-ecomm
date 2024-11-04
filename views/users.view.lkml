@@ -40,7 +40,7 @@ view: users {
     type: string
     sql: ${TABLE}.email ;;
     action: {
-      label: "Send Email via SendGrid"
+      label: "Send Custom Email"
       url: "https://asia-southeast1-tridorian-wildan-sandbox-dev.cloudfunctions.net/sendgrid-http"
       form_param: {
         name: "from_address"
@@ -76,6 +76,147 @@ view: users {
         label: "HTML or Text"
         required: yes
         default: "text/plain"
+        option: {
+          name:  "text/plain"
+          label:  "Text"
+        }
+        option: {
+          name:  "text/html"
+          label:  "HTML"
+        }
+      }
+    }
+    action: {
+      label: "Send Core Email"
+      url: "https://asia-southeast1-tridorian-wildan-sandbox-dev.cloudfunctions.net/sendgrid-http"
+      form_param: {
+        name: "from_address"
+        type: string
+        label: "Sender"
+        required: yes
+        default: "wildan.putra@tridorian.com"
+      }
+      form_param: {
+        name: "to_address"
+        type: string
+        label: "Receiver"
+        required: yes
+        default: "{{value}}"
+      }
+      form_param: {
+        name: "subject"
+        type: string
+        label: "Subject"
+        required: yes
+        default: "string"
+      }
+      form_param: {
+        name: "body"
+        type: textarea
+        label: "Body Mail"
+        required: yes
+        default: "String"
+      }
+      form_param: {
+        name: "content_type"
+        type: select
+        label: "HTML or Text"
+        required: yes
+        default: "text/html"
+        option: {
+          name:  "text/plain"
+          label:  "Text"
+        }
+        option: {
+          name:  "text/html"
+          label:  "HTML"
+        }
+      }
+    }
+    action: {
+      label: "Send Loyal Email"
+      url: "https://asia-southeast1-tridorian-wildan-sandbox-dev.cloudfunctions.net/sendgrid-http"
+      form_param: {
+        name: "from_address"
+        type: string
+        label: "Sender"
+        required: yes
+        default: "wildan.putra@tridorian.com"
+      }
+      form_param: {
+        name: "to_address"
+        type: string
+        label: "Receiver"
+        required: yes
+        default: "{{value}}"
+      }
+      form_param: {
+        name: "subject"
+        type: string
+        label: "Subject"
+        required: yes
+        default: "string"
+      }
+      form_param: {
+        name: "body"
+        type: textarea
+        label: "Body Mail"
+        required: yes
+        default: "String"
+      }
+      form_param: {
+        name: "content_type"
+        type: select
+        label: "HTML or Text"
+        required: yes
+        default: "text/html"
+        option: {
+          name:  "text/plain"
+          label:  "Text"
+        }
+        option: {
+          name:  "text/html"
+          label:  "HTML"
+        }
+      }
+    }
+    action: {
+      label: "Send Whales Email"
+      url: "https://asia-southeast1-tridorian-wildan-sandbox-dev.cloudfunctions.net/sendgrid-http"
+      form_param: {
+        name: "from_address"
+        type: string
+        label: "Sender"
+        required: yes
+        default: "wildan.putra@tridorian.com"
+      }
+      form_param: {
+        name: "to_address"
+        type: string
+        label: "Receiver"
+        required: yes
+        default: "{{value}}"
+      }
+      form_param: {
+        name: "subject"
+        type: string
+        label: "Subject"
+        required: yes
+        default: "string"
+      }
+      form_param: {
+        name: "body"
+        type: textarea
+        label: "Body Mail"
+        required: yes
+        default: "String"
+      }
+      form_param: {
+        name: "content_type"
+        type: select
+        label: "HTML or Text"
+        required: yes
+        default: "text/html"
         option: {
           name:  "text/plain"
           label:  "Text"
