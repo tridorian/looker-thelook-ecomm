@@ -88,7 +88,7 @@ view: users {
     }
     action: {
       label: "Send Core Email"
-      url: "https://asia-southeast1-tridorian-wildan-sandbox-dev.cloudfunctions.net/sendgrid-http"
+      url: "https://asia-southeast1-tridorian-wildan-sandbox-dev.cloudfunctions.net/sendgrid-http-engagement"
       form_param: {
         name: "from_address"
         type: string
@@ -111,31 +111,28 @@ view: users {
         default: "string"
       }
       form_param: {
-        name: "body"
-        type: textarea
-        label: "Body Mail"
-        required: yes
-        default: "String"
-      }
-      form_param: {
-        name: "content_type"
+        name: "customer_type"
         type: select
-        label: "HTML or Text"
+        label: "Customer Type"
         required: yes
-        default: "text/html"
+        default: "core"
         option: {
-          name:  "text/plain"
-          label:  "Text"
+          name:  "core"
+          label:  "Core - Your Best Customers"
         }
         option: {
-          name:  "text/html"
-          label:  "HTML"
+          name:  "loyal"
+          label:  "Loyal - Your most loyal customers"
+        }
+        option: {
+          name: "whales"
+          label: "Whales - Your Highest Paying Customers"
         }
       }
     }
     action: {
       label: "Send Loyal Email"
-      url: "https://asia-southeast1-tridorian-wildan-sandbox-dev.cloudfunctions.net/sendgrid-http"
+      url: "https://asia-southeast1-tridorian-wildan-sandbox-dev.cloudfunctions.net/sendgrid-http-engagement"
       form_param: {
         name: "from_address"
         type: string
@@ -158,31 +155,28 @@ view: users {
         default: "string"
       }
       form_param: {
-        name: "body"
-        type: textarea
-        label: "Body Mail"
-        required: yes
-        default: "String"
-      }
-      form_param: {
-        name: "content_type"
+        name: "customer_type"
         type: select
-        label: "HTML or Text"
+        label: "Customer Type"
         required: yes
-        default: "text/html"
+        default: "loyal"
         option: {
-          name:  "text/plain"
-          label:  "Text"
+          name:  "core"
+          label:  "Core - Your Best Customers"
         }
         option: {
-          name:  "text/html"
-          label:  "HTML"
+          name:  "loyal"
+          label:  "Loyal - Your most loyal customers"
+        }
+        option: {
+          name: "whales"
+          label: "Whales - Your Highest Paying Customers"
         }
       }
     }
     action: {
       label: "Send Whales Email"
-      url: "https://asia-southeast1-tridorian-wildan-sandbox-dev.cloudfunctions.net/sendgrid-http"
+      url: "https://asia-southeast1-tridorian-wildan-sandbox-dev.cloudfunctions.net/sendgrid-http-engagement"
       form_param: {
         name: "from_address"
         type: string
@@ -205,25 +199,22 @@ view: users {
         default: "string"
       }
       form_param: {
-        name: "body"
-        type: textarea
-        label: "Body Mail"
-        required: yes
-        default: "String"
-      }
-      form_param: {
-        name: "content_type"
+        name: "customer_type"
         type: select
-        label: "HTML or Text"
+        label: "Customer Type"
         required: yes
-        default: "text/html"
+        default: "whales"
         option: {
-          name:  "text/plain"
-          label:  "Text"
+          name:  "core"
+          label:  "Core - Your Best Customers"
         }
         option: {
-          name:  "text/html"
-          label:  "HTML"
+          name:  "loyal"
+          label:  "Loyal - Your most loyal customers"
+        }
+        option: {
+          name: "whales"
+          label: "Whales - Your Highest Paying Customers"
         }
       }
     }
