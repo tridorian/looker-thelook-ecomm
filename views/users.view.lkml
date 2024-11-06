@@ -108,7 +108,7 @@ view: users {
         type: string
         label: "Subject"
         required: yes
-        default: "string"
+        default: "Your Invitation to the Good Life: A New Level of Pleasure"
       }
       form_param: {
         name: "customer_type"
@@ -152,7 +152,7 @@ view: users {
         type: string
         label: "Subject"
         required: yes
-        default: "string"
+        default: "Sausage Party Time: Introducing Lelo Loyalty Program!"
       }
       form_param: {
         name: "customer_type"
@@ -196,7 +196,7 @@ view: users {
         type: string
         label: "Subject"
         required: yes
-        default: "string"
+        default: "You Are GOD!"
       }
       form_param: {
         name: "customer_type"
