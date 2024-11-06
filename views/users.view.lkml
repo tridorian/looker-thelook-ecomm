@@ -101,7 +101,7 @@ view: users {
         type: string
         label: "Receiver"
         required: yes
-        default: "{{value}}"
+        default: "andhika@tridorian.com" #"{{value}}"
       }
       form_param: {
         name: "subject"
@@ -145,7 +145,7 @@ view: users {
         type: string
         label: "Receiver"
         required: yes
-        default: "{{value}}"
+        default: "gino.pua@tridorian.com" #"{{value}}"
       }
       form_param: {
         name: "subject"
@@ -189,7 +189,7 @@ view: users {
         type: string
         label: "Receiver"
         required: yes
-        default: "{{value}}"
+        default: "alfa@tridorian.com" #"{{value}}"
       }
       form_param: {
         name: "subject"
