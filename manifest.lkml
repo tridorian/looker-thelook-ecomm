@@ -14,3 +14,8 @@ constant: BQML_REMOTE_CONNECTION_ID {
 constant: LOOKER_BIGQUERY_CONNECTION_NAME {
   value: "looker-demo-ecomm"
 }
+
+localization_settings: {
+  default_locale: en
+  localization_level: permissive
+}
