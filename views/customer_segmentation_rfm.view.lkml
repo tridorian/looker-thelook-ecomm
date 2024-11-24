@@ -63,18 +63,21 @@ view: customer_segmentation_rfm {
   }
 
   dimension: recency {
+    label: "Recency"
     description: "How many days ago customer made a purchase?"
     type: number
     sql: ${TABLE}.recency ;;
   }
 
   dimension: frequency {
+    label: "Frequency"
     description: "How many times has the customer purchased from our store?"
     type: number
     sql: ${TABLE}.frequency ;;
   }
 
   dimension: monetary {
+    label: "Monetary"
     description: "How many $ has this customer spent?"
     type: number
     sql: ${TABLE}.monetary ;;
