@@ -1,7 +1,10 @@
 {
   "Unique ID for each user that has ordered": "รหัสประจำตัวที่ไม่ซ้ำกันสำหรับแต่ละผู้ใช้ที่สั่งซื้อ",
-  "How many days ago customer made a purchase?": "ลูกค้าซื้อสินค้ามาแล้วกี่วัน?",
+  "Recency": "ความใหม่ล่าสุด",
+  "How many days ago customer made a purchase?": "ลูกค้าซื้อสินค้าไปแล้วกี่วัน?",
+  "Frequency": "ความถี่",
   "How many times has the customer purchased from our store?": "ลูกค้าซื้อของจากร้านเราแล้วกี่ครั้ง?",
+  "Monetary": "การเงิน",
   "How many $ has this customer spent?": "ลูกค้ารายนี้ใช้จ่ายไปกี่เหรียญ?",
   "customer segment type": "ประเภทกลุ่มลูกค้า"
 }

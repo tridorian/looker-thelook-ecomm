@@ -1,7 +1,10 @@
 {
   "Unique ID for each user that has ordered": "Unique ID for each user that has ordered",
+  "Recency": "Recency",
   "How many days ago customer made a purchase?": "How many days ago customer made a purchase?",
+  "Frequency": "Frequency",
   "How many times has the customer purchased from our store?": "How many times has the customer purchased from our store?",
+  "Monetary": "Monetary",
   "How many $ has this customer spent?": "How many $ has this customer spent?",
   "customer segment type": "customer segment type"
 }

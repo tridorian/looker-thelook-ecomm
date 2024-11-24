@@ -1,7 +1,10 @@
 {
   "Unique ID for each user that has ordered": "Unikt ID för varje användare som har beställt",
+  "Recency": "Senaste tid",
   "How many days ago customer made a purchase?": "Hur många dagar sedan gjorde kunden ett köp?",
+  "Frequency": "Frekvens",
   "How many times has the customer purchased from our store?": "Hur många gånger har kunden handlat från vår butik?",
+  "Monetary": "Monetär",
   "How many $ has this customer spent?": "Hur många $ har den här kunden spenderat?",
   "customer segment type": "kundsegmenttyp"
 }
